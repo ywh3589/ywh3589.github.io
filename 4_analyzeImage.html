@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Analyze Image(POST)</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">How To Guide By Woohyuk Yang</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                  
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/background.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>About Analyze Image API</h1>
+                        <h2 class="subheading">And how can we use that? </h2>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                <h2 class="section-heading">What is Analyaze Image API?</h2>
+                    <p>Now you came all the way to use Microsoft Computer Vision API. We will talk about how to use Analyze image API first. With Analyze image API, we can extract visual features based on image content provided by the user. </p>
+
+                    <p>Below is an official documentation(reference) for Analyze image API. </p>
+                     <a href = "https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa"><font color = "blue">Link to Analyze Image API official documentation</font></a>
+
+
+                    <p>This webpage is made to introduce you more about how we can use the API in more specific way so I will present detailed features even to make you be able to use this API freely in the end.</p>
+
+                    <p>Let’s see how it works first seeing how Request URL looks like. 
+ When you request to server, Request URL goes like this
+</p>
+
+<img class="img-responsive" src="img/4_0_0.jpg" alt="">
+
+                    <p>you choose location among westus, eastus2, westcentralus, westeurope, and southeastasia. As request parameters there are visualFeatures, details, and language. VisualFeatures contain Categories, Tags, Description, Faces, ImageType, Color, and Adult. 
+details contain Celebrities, and Landmarks
+language has two options like en; english, zn; simplified chinese.
+</p>
+
+ <h2 class="section-heading">Console Usage</h2>
+
+<p>There is a console you can use the API briefly so it is easier for you to get used to this API with the console. You can choose location, parameters, and even language on the console. Go ahead and test the console first!
+</p>
+
+<p>Link is here</p>
+
+                    <a href = "https://southeastasia.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa/console"><font color = "blue">Link to Analyze Image API Console</font></a> 
+
+<p>I tested a image with the console. My request URL was like below</p>
+ <img class="img-responsive" src="img/4_0.jpg" alt="">
+
+ <p>You can see I chose southeastasia for location, Categories, ImageType, Tags, Adult, Faces, Color for visualFeature, and Celebrities for details, and English for the language from the request URL.</p>
+
+                   
+
+                    <p>I posted a URL of Bill Gates standing next to Eiffel tower to test the console.</p>
+<a href = "http://s1.lprs1.fr/images/2011/04/04/1393033_gates-trocadero_1000x625.jpg"><font color = "blue">http://s1.lprs1.fr/images/2011/04/04/1393033_gates-trocadero_1000x625.jpg</font></a> 
+ <img class="img-responsive" src="img/4_1.jpg" alt="">
+                    <p>I got a result like this from the picture above. The result is in JSON.</p>
+
+                   <img class="img-responsive" src="img/4_4.jpg" alt="">
+
+                   <p>You can find some parameters I put on the request like Celebrites, adult, etc. Other features like categories and metadata comes out as a result default. The Server could not detect the Eiffel tower because it quite looks blur but detected Bill gates exactly. The response is in the form of JSON. So you can extract information you want to extract easily as you already know how to deal with JSON. 
+
+</p>
+
+ <img class="img-responsive" src="img/4_5.jpg" alt="">
+
+
+                    <p>Ok, now we are done with console. Let’s jump into API code written in JavaScript to make a useful app for us. </p>
+
+<!-- jsfiddle-->
+
+<h2 class="section-heading">Getting the name of the celebrities</h2>
+<iframe width="100%" height="300" src="http://www.jsfiddle.net/ywh3589/sae03a7t/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+            
+
+                    <p>Above JavaScript part of the program starts with lines below.</p>
+
+                    <a href="#">
+                        <img class="img-responsive" src="img/4_6.jpg" alt="">
+                    </a>
+                  
+                    <p>I made a form to get a URL as an input. I need to DOM elements of the page are all loaded and ready to use that. So I put $(function(){} </p>
+
+                    <p>$(function() is a short version of </p>
+
+                     <a href="#">
+                        <img class="img-responsive" src="img/4_7.jpg" alt="">
+                    </a>
+
+                    <p>and after I put $(form).submit(function(event){}. This means like “Do something inside the bracket when a form is submitted.
+I put my API key, and input URL, and payload(myBody here) to variables. 
+Parameters are stored in an object called params. 
+I put $.ajax({}) to do an asynchronous AJAX request. Remember you had to write long codes before when you used pure JavaScript. You can apply this form of AJAX to other APIs later when you use jQuery. Inside $.ajax({}), you can see processes to request data to url and before sending we set request header with .setRequestHeader() function. And when the request is successfully doen, .done() part works and the response is stored in data parameter while there is something wrong .fail() part works so it put “error” alert on the browser. You can deal with information deduced from the picture from response which is stored in a form of JSON. 
+</p>
+
+ <a href="#">
+                        <img class="img-responsive" src="img/4_3.jpg" alt="">
+                    </a>
+
+                
+
+                    <p>Manipulating JSON I could make a simple application showing the name of the celebrities. </p>
+
+                    <p>Try it now own your own. Try only picture with the celebrity is in. If not, the program will not work properly. It will only show you the picture from the URL you input. Now I will end the explanation about this analyze image API.  </p>
+
+                    
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Get Thumbnail</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">How To Guide By Woohyuk Yang</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                   
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/background.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>About Get Thumbnail API</h1>
+                        <h2 class="subheading">And how can we use that? </h2>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p>Time to explore get thumbnail API now. You must have been familiar with using Microsoft Computer Vision API quite a lot now. </p>
+
+                    <p>The official document about this API can be found here. </p>
+
+                    <a href = "https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fb"><font color = "blue">Link to Get Thumbnail API official documentation</font></a> 
+
+                    <p>According to the official document, this API makes an thumbnail in a size the user wants. When user input width, and height the user desire the picture to be then this API makes that specific-sized thumbnail as a result. The point of Microsoft Computer Vision get thumbnail API is it crops the picture based on ROI(Region Of Interest). So it crops the important part of the picture with intelligence in any size.</p>
+
+                    <h2 class="section-heading">Console Usage</h2>
+
+                    <p>There is a console also you can test Microsoft Computer Vision API which is called OPEN API testing console. </p>
+
+                    <p>Link is here</p>
+
+                    <a href = "https://southeastasia.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fb/console"><font color = "blue">Link to Get Thumbnail API Console</font></a> 
+
+                    
+
+                    <p>You can input some values including your API key, width, height, and the picture URL. And the request URL and HTTP request will be like below. And it seems it worked well. </p>
+
+<img class="img-responsive" src="img/5_1.jpg" alt="">
+<br>
+<img class="img-responsive" src="img/5_2.jpg" alt="">
+
+
+
+                    <p>You must have this result. It did work well. Good request and Good respond, but why can not see a thumbnail we want? The official document says it returns [Binary image data]. 
+Dealing with Binary image data to display on the web browser needs extra work. Binary image data should be encoded to base64 style, which means we have to encode the file but this is a subject beyond what we learnt from CS290 so we can skip this now and deal with how to encode binary image data to base64 and eventually display that base64 encoded image on the browser later. Now, we can check whether our request and response work well. 
+</p>
+
+ <p>Focus on Request URL header again, you can see what kind of information is being carried. 
+ As you can see from HTTP request. This request is done via POST way. We
+ input URL and size of thumbnail to be so using POST will be more proper.
+</p>
+
+ <h2 class="section-heading">Actual code to get a new thumbnail</h2>
+<iframe width="100%" height="300" src="http://www.jsfiddle.net/ywh3589/99r9uacx/2/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+ <p>You can input URL, width, and height as you did into console before.
+ Let's see the code. 
+ </p>
+
+ <a href="#">
+                        <img class="img-responsive" src="img/4_6.jpg" alt="">
+                    </a>
+
+<p>This part is same with Analyze Image API. because there is a form we can type in width, height, and URL. so jQuery waits till the form is loaded and we click the submit button. </p>
+
+<p>Now the parameters got different as you can notice. We put URL, width, and height as a parameter to be carried on URL. We use AJAX here. as AJAX works the program works asynchronously, so the user does not have to wait till the response to come to do other action.(Program works asynchronously.) </p>
+
+<p>We set header using setRequestHeader() function. Content Type and API key should be in the header so we set those data to the request header here. And type is "POST". To send the data we make the data into string.</p>
+
+                   
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
